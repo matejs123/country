@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="matejs">
+
+        <createTable schemaName="countrygame" tableName="serviceDTO">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="gdp" type="int"/>
+            <column name="name" type="varchar(60)"/>
+        </createTable>
+
+        <createTable schemaName="countrygame" tableName="TOURISM">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="gdp" type="int"/>
+            <column name="name" type="varchar(60)"/>
+        </createTable>
+
+        <createTable schemaName="countrygame" tableName="INDUSTRY">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <createTable schemaName="countrygame" tableName="COMPANY">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <createTable schemaName="countrygame" tableName="COMPANY_HISTORY">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="profit" type="int"/>
+            <column name="year" type="int"/>
+            <column name="companyId" type="int">
+                <constraints unique="true" nullable="false" referencedTableName="COMPANY" referencedColumnNames="id" foreignKeyName="fk_company_id"/>
+            </column>
+        </createTable>
+
+        <createTable schemaName="countrygame" tableName="ECONOMY">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+        </createTable>
+
+        <insert tableName="serviceDTO">
+            <column name="id">1</column>
+            <column name="name">"sura"</column>
+            <column name="gdp">1</column>
+        </insert>
+
+        <!--    <createTable tableName="company"-->
+        <!--      remarks="Company Data">-->
+        <!--      <column name="id" type="int" autoIncrement="true">-->
+        <!--        <constraints nullable="false" unique="true" primaryKey="true"/>-->
+        <!--      </column>-->
+        <!--      <column name="name" type="varchar(255)">-->
+        <!--        <constraints nullable="false" unique="true"/>-->
+        <!--      </column>-->
+        <!--      <column name="employee" type="int">-->
+        <!--        <constraints nullable="false"/>-->
+        <!--      </column>-->
+        <!--    </createTable>-->
+
+        <!--    &lt;!&ndash; for manual rollback-->
+        <!--    <rollback>-->
+        <!--      <dropTable tableName="company"/>-->
+        <!--    </rollback>-->
+        <!--    &ndash;&gt;-->
+
+        <!--    <createTable tableName="employees"-->
+        <!--      remarks="Employees Data">-->
+        <!--      <column name="id" type="int" autoIncrement="true">-->
+        <!--        <constraints nullable="false" primaryKey="true"/>-->
+        <!--      </column>-->
+        <!--      <column name="name" type="varchar(100)">-->
+        <!--        <constraints nullable="false"/>-->
+        <!--      </column>-->
+        <!--    </createTable>-->
+
+        <!--    <addForeignKeyConstraint baseTableName="company" baseColumnNames="employee"-->
+        <!--      constraintName="employee_fk"-->
+        <!--      referencedTableName="employees" referencedColumnNames="id"/>-->
+    </changeSet>
+</databaseChangeLog>
